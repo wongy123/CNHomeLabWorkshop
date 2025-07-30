@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker pull mongodb/mongodb-community-server:latest
+docker pull mongo:latest

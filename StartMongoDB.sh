@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CONTAINER_NAME="mongodb"
-IMAGE="mongodb/mongodb-community-server:latest"
+IMAGE="mongo:latest"
 PORT="27017"
 DATA_DIR="/srv/mongodb/data"
 
