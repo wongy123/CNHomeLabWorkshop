@@ -1,0 +1,16 @@
+[Unit]
+Description=Start Node.js Express server
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=user
+ExecStart=/usr/local/bin/StartNodeServer.sh
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
