@@ -1,4 +1,7 @@
 ﻿# CNHomeLabWorkshop
+
+ <img width="2560" height="1280" alt="image" src="https://github.com/user-attachments/assets/0a00c8d1-e3f4-47bd-87b1-9a783b675b3f" />
+
  `sudo cp StartNodeServer.sh /usr/local/bin/`
  `sudo cp start-node-express.service /etc/systemd/system`
  ```
