@@ -159,8 +159,6 @@ To install Caddy using the InstallCaddy.sh script, run this command:
 ./InstallCaddy.sh
 ```
 
----
-
 ### Setup Complete!
 
 You can now start developing and hosting a MERN stack web application on your Raspberry Pi!
@@ -168,6 +166,25 @@ You can now start developing and hosting a MERN stack web application on your Ra
 Navigate to `http://<pi-ip-address>/` to see your Caddy page! (Replace `<pi-ip-address>` with your Pi's actual address)
 
 ---
+## Set up StudyBuddy Web App
+### Introduction
+StudyBuddy is an open-source web application written by Angus Wong using the MERN tech stack. In this workshop, we will show you how you can deploy the web app on the Pi we have just configured!
+
+[StudyBuddy GitHub Page](https://github.com/wongy123/StudyBuddy)
+
+### Walkthrough
+#### Step 1
+Let's clone the repo onto your Pi! First we will run `cd` to make sure we are back at the user directory. Then we will clone the repo and navigate into the `StudyBuddy` directory.
+
+We will also run a `git checkout` command to switch to a branch specifically created for this workshop.
+
+``` Bash
+cd
+git clone https://github.com/wongy123/StudyBuddy.git
+cd StudyBuddy
+git checkout origin/NoSubDirectory
+```
+
 StudyBuddy setup to be completed
  `sudo cp StartNodeServer.sh /usr/local/bin/`
  `sudo cp start-node-express.service /etc/systemd/system`
