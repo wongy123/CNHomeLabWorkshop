@@ -31,7 +31,7 @@ LTS stands for Long Term Support. 24.04 is the latest LTS release of Ubuntu, mea
 <img width="1330" height="943" alt="image" src="https://github.com/user-attachments/assets/69497c68-b5a6-4432-8523-3d6dc367bb91" />
 
 #### Step 5
-Select your SD card or USB adapter as the Storage. The imager will overwrite everything in the selected storage device, so make sure you have backed up important files. Once that is done, click `Next`.
+Select your SD card or USB adapter as the Storage. **The imager will overwrite everything in the selected storage device, so make sure you have backed up important files. Once that is done, click `Next`.**
 <img width="1330" height="943" alt="image" src="https://github.com/user-attachments/assets/ef484297-ad25-4a88-8366-5eb9121ff7b0" />
 <img width="1330" height="943" alt="image" src="https://github.com/user-attachments/assets/0a5fb125-c20c-4412-b07e-e26607c9869f" />
 
