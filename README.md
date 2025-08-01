@@ -167,7 +167,8 @@ You can now start developing and hosting a MERN stack web application on your Ra
 
 Navigate to `http://<pi-ip-address>/` to see your Caddy page! (Replace `<pi-ip-address>` with your Pi's actual address)
 
-
+---
+StudyBuddy setup to be completed
  `sudo cp StartNodeServer.sh /usr/local/bin/`
  `sudo cp start-node-express.service /etc/systemd/system`
  ```
