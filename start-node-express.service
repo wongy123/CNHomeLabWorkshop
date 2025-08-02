@@ -1,16 +1,13 @@
 [Unit]
 Description=Start Node.js Express server
 After=network.target
-Wants=network-online.target
 
 [Service]
 Type=simple
-User=user
-ExecStart=/usr/local/bin/StartNodeServer.sh
+User=%i
+Environment=HOME=/home/%i
+ExecStart=/home/%i/.nvm/versions/node/v22.17.1/bin/node /home/%i/StudyBuddy/server/server.js
 Restart=on-failure
-RestartSec=5
-StandardOutput=journal
-StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
