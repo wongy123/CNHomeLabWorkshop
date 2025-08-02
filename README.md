@@ -210,7 +210,6 @@ npm i
 #### Step 5
 Our StudyBuddy app is built and ready for deployment. We need to run aother script from the `CNHomeLabWorkshop` repo to start the Express API in the background as a service. This does the same thing as just running `node server.js` inside of the `StudyBuddy/server/` directory, but running the command requires keeping the terminal running, whereas running it as a service means it can run in the background, and we can start the service automatically on boot.
 
-Remember to replace `<your-user-name>` with your actual username in Ubuntu
 ``` Bash
 cd
 cd CNHomeLabWorkshop/
@@ -260,6 +259,7 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
 
 
