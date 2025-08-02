@@ -124,7 +124,9 @@ On a side note, there are several ways you can run scripts on Linux.
 2. `. script.sh` This will run all the commands in the script file as if you had just copied them into the terminal and run them. No execute permission needed.
 3. `source script.sh` This does the same thing as `. script.sh`.
 
-The difference between `./` and `source` is that any changes to environment variables made in `./` will not affect the current shell, while those in `source` will.
+The difference between `./` and `source` is that any changes to local shell variables made in `./` will not affect the current shell, while those in `source` will.
+
+For example, in our `StartMongoDB.sh`, lines 3 to 6 set four local variables. If we run the script with `./StartMongoDB.sh` and follow up with `echo $CONTAINER_NAME`, we will not see anything printed in response to the `echo` command as that variable does not exist in our current shell. However, if we run the script with `source StartmongoDB.sh` and follow up with `echo $CONTAINER_NAME`, we will see `mongodb` as a response.
 
 #### Step 4
 
@@ -280,6 +282,7 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
 
 
