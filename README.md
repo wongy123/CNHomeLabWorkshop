@@ -119,7 +119,8 @@ Run this installation script by running this command:
 ./InstallDocker.sh
 ```
 
-On a side note, there are several ways you can run scripts on Linux.
+##### Side note
+There are several ways you can run scripts on Linux.
 1. `./script.sh` This will launch a new shell in the background to execute the script. It requires the user calling this command to have permission to execute the script file.
 2. `. script.sh` This will run all the commands in the script file as if you had just copied them into the terminal and run them. No execute permission needed.
 3. `source script.sh` This does the same thing as `. script.sh`.
@@ -282,6 +283,7 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
 
 
