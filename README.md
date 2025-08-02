@@ -95,14 +95,14 @@ Let's get started on building this environment to host a MERN stack app!
 #### Step 1
 
 Clone this repo by running this command: 
-```Bash
+``` Bash
 git clone https://github.com/wongy123/CNHomeLabWorkshop.git
 ```
 
 #### Step 2
 
 Navigate into the cloned repository by running this command: 
-```Bash
+``` Bash
 cd CNHomeLabWorkshop/
 ```
 
@@ -115,8 +115,8 @@ Run the InstallDocker.sh script to install docker on your Pi.
 Docker is a platform for running and managing standalone environments called Containers. Each container usually runs an application or service. We will be using Docker to host our MongoDB database, which will allow us to easily backup and migrate the entire database if necessary.
 
 Run this installation script by running this command: 
-```Bash
-./InstallDocker.sh
+``` Bash
+source InstallDocker.sh
 ```
 
 #### Step 4
@@ -124,8 +124,8 @@ Run this installation script by running this command:
 Run the InstallNode.sh script to install Node.js using Node Version Manager (NVM). NVM is a tool that allows you to quickly install different versions of Node.
 
 Run this installation script by running this command: 
-```Bash
-./InstallNode.sh
+``` Bash
+source InstallNode.sh
 ```
 
 #### Step 5
@@ -142,8 +142,8 @@ An image is basically a snapshot of a container. Building the image allows you t
 Now that we have the docker image for MongoDB, let's build and run it. The StartMongoDB.sh script builds the image, sets its storage volume to be on the host's `/srv/mongodb/data` directory, and runs the "mongodb" container automatically.
 
 Run this script by running this command: 
-```Bash
-./StartMongoDB.sh
+``` Bash
+source StartMongoDB.sh
 ```
 
 #### Step 7
@@ -156,7 +156,7 @@ Finally, let's install Caddy. Caddy is a web wserver that can also reverse proxy
 
 To install Caddy using the InstallCaddy.sh script, run this command: 
 ```
-./InstallCaddy.sh
+source InstallCaddy.sh
 ```
 
 ### Setup Complete!
@@ -260,3 +260,4 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
