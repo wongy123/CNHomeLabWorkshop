@@ -197,7 +197,7 @@ npm install # or npm i
 The StudyBuddy React app located in the `client` directory also comes with a `deploy.sh` script which automatically builds the app and copies the content into `/var/www/html`. By convention, `/var/www/html` is the root directory of a web server. When the client navigates to the web server's URL, a html `GET` request is sent to the server, and the html file located in the root directory gets served in a response to the client, displaying the webpage on their web browser.
 
 ``` Bash
-./deploy.sh
+source deploy.sh
 ```
 
 #### Step 4
@@ -260,5 +260,6 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
 
