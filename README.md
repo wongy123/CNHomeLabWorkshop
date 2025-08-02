@@ -116,7 +116,7 @@ Docker is a platform for running and managing standalone environments called Con
 
 Run this installation script by running this command: 
 ``` Bash
-source InstallDocker.sh
+./InstallDocker.sh
 ```
 
 On a side note, there are several ways you can run scripts on Linux.
@@ -164,7 +164,7 @@ Now that we have the docker image for MongoDB, let's build and run it. The Start
 
 Run this script by running this command: 
 ``` Bash
-source StartMongoDB.sh
+./StartMongoDB.sh
 ```
 
 #### Step 7
@@ -177,7 +177,7 @@ Finally, let's install Caddy. Caddy is a web server that can also reverse proxy.
 
 To install Caddy using the InstallCaddy.sh script, run this command: 
 ``` Bash
-source InstallCaddy.sh
+./InstallCaddy.sh
 ```
 
 ### Setup Complete!
@@ -216,8 +216,6 @@ npm install # or npm i
 
 #### Step 3
 The StudyBuddy React app located in the `client` directory also comes with a `deploy.sh` script which automatically builds the app and copies the content into `/var/www/html`. By convention, `/var/www/html` is the root directory of a web server. When the client navigates to the web server's URL, a http `GET` request is sent to the server, and the html file located in the root directory gets served in a response to the client, displaying the webpage on their web browser.
-
-We will use `./` here as this script has `set -x` which prints all commands and their arguments as they are executed. If left on, our shell will become very cluttered later.
 
 ``` Bash
 ./deploy.sh
@@ -282,6 +280,7 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
 
 
