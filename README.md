@@ -176,37 +176,87 @@ StudyBuddy is an open-source web application written by Angus Wong using the MER
 #### Step 1
 Let's clone the repo onto your Pi! First we will run `cd` to make sure we are back at the user directory. Then we will clone the repo and navigate into the `StudyBuddy` directory.
 
-We will also run a `git checkout` command to switch to a branch specifically created for this workshop.
+We will also run a `git checkout` command to switch to a branch specifically created for this workshop. In this command, the `-b` flag creates a local branch that we are going to `checkout` to, and the `--track` flag specifies the remote branch that this local branch will be tracking, in this case being the `NoSubDirectory` branch hosted on GitHub.  
 
 ``` Bash
 cd
 git clone https://github.com/wongy123/StudyBuddy.git
 cd StudyBuddy
-git checkout origin/NoSubDirectory
+git checkout -b NoSubDirectory --track origin/NoSubDirectory
 ```
 
-StudyBuddy setup to be completed
- `sudo cp StartNodeServer.sh /usr/local/bin/`
- `sudo cp start-node-express.service /etc/systemd/system`
- ```
+#### Step 2
+Navigate to the `client` directory and install the required packages via `npm`, Node's default package manager. A package manager is a tool for managing dependencies. Basically, when we run the `install` command, `npm` will look at the `package.json` file and install the specified versions of all the packages listed in it. This helps ensure that to a certain extent, the project will always build with the same version of the same packages no matter what computer you are building on, preventing the "it works on my machine" predicament.
+
+``` Bash
+cd client
+npm install # or npm i
+```
+
+#### Step 3
+The StudyBuddy React app located in the `client` directory also comes with a `deploy.sh` script which automatically builds the app and copies the content into `/var/www/html`. By convention, `/var/www/html` is the root directory of a web server. When the client navigates to the web server's URL, a html `GET` request is sent to the server, and the html file located in the root directory gets served in a response to the client, displaying the webpage on their web browser.
+
+``` Bash
+./deploy.sh
+```
+
+#### Step 4
+Now, let's install the required packages for the back-end Express API.
+``` Bash
+cd ../server/ # .. means the parent directory
+npm i
+```
+
+#### Step 5
+Our StudyBuddy app is built and ready for deployment. We need to run aother script from the `CNHomeLabWorkshop` repo to start the Express API in the background as a service. This does the same thing as just running `node server.js` inside of the `StudyBuddy/server/` directory, but running the command requires keeping the terminal running, whereas running it as a service means it can run in the background, and we can start the service automatically on boot.
+
+Remember to replace `<your-user-name>` with your actual username in Ubuntu
+``` Bash
+cd
+cd CNHomeLabWorkshop/
+sudo cp StartNodeServer.sh /usr/local/bin/
+sudo cp start-node-express@.service /etc/systemd/system
 sudo systemctl daemon-reload
-sudo systemctl enable start-node-express
-sudo systemctl start start-node-express
+sudo systemctl enable start-node-express@<your-user-name> # replace <your-user-name with your actual username in Ubuntu>
+sudo systemctl start start-node-express@<your-user-name> # replace <your-user-name with your actual username in Ubuntu>
 ```
 
-`sudo nano /etc/caddy/Caddyfile`
-``` 
+Once this is done, you can navigate to `http://<your-ip-address>:4000` on your PC's web browser and you should see the text `Welcome to StudyBuddy API!` on the page.
+
+#### Step 6
+This is the final step! We are going to configure Caddy to do two things:
+1. When receiving requests on the `/api` subdirectory, redirect those requests to the Express API running on port `:4000`
+2. When receiving requests on the `/` root, server the `/var/www/html/index.html` file. This is our React webpage
+
+``` Bash
+sudo nano /etc/caddy/Caddyfile
+```
+
+Replace the `:80` block with the following content:
+``` Caddyfile
 :80 {
         handle /api/* {
                 reverse_proxy localhost:4000
         }
 
         handle /* {
-                root * /var/www/html/StudyBuddy
+                root * /var/www/html
                 try_files {path} /index.html
-
-        # Enable the static file server.
                 file_server
         }
 }
 ```
+
+This Caddyfile configuration receives requests only on port `:80`. This is the port for `http` requests which is unencrypted. If you have your own domain and wish to deploy your web application there instead, simply replace the `:80` with your domain name such as `testproject.com`, and Caddy will automatically request a TLS certificate from Let's Encrypt for your domain, allowing the use of `https` protocol.
+
+Press `Ctrl` + `x` to exit the Nano editor, then press `y` and `enter` to save the contents. 
+
+Now, run this command to reload Caddy:
+``` Bash
+sudo systemctl restart caddy
+```
+
+#### Step 7
+**Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
+
+You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
