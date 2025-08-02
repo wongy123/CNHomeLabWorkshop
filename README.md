@@ -119,13 +119,34 @@ Run this installation script by running this command:
 source InstallDocker.sh
 ```
 
+On a side note, there are several ways you can run scripts on Linux.
+1. `./script.sh` This will launch a new shell in the background to execute the script. It requires the user calling this command to have permission to execute the script file.
+2. `. script.sh` This will run all the commands in the script file as if you had just copied them into the terminal and run them. No execute permission needed.
+3. `source script.sh` This does the same thing as `. script.sh`.
+
+The difference between `./` and `source` is that any changes to environment variables made in `./` will not affect the current shell, while those in `source` will.
+
 #### Step 4
 
 Run the InstallNode.sh script to install Node.js using Node Version Manager (NVM). NVM is a tool that allows you to quickly install different versions of Node.
 
-Run this installation script by running this command: 
+Run the following commands to install nvm and Node: 
 ``` Bash
-source InstallNode.sh
+# Download and install nvm:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+# in lieu of restarting the shell
+\. "$HOME/.nvm/nvm.sh"
+
+# Download and install Node.js:
+nvm install 22
+
+# Verify the Node.js version:
+node -v # Should print "v22.18.0".
+nvm current # Should print "v22.18.0".
+
+# Verify npm version:
+npm -v # Should print "10.9.3".
 ```
 
 #### Step 5
@@ -148,7 +169,7 @@ source StartMongoDB.sh
 
 #### Step 7
 
-Finally, let's install Caddy. Caddy is a web wserver that can also reverse proxy. 
+Finally, let's install Caddy. Caddy is a web server that can also reverse proxy. 
 
 <img width="1600" height="789" alt="image" src="https://github.com/user-attachments/assets/1d862d57-9d88-4dde-8c88-2d9728177506" />
 
@@ -174,7 +195,7 @@ StudyBuddy is an open-source web application written by Angus Wong using the MER
 
 ### Walkthrough
 #### Step 1
-Let's clone the repo onto your Pi! First we will run `cd` to make sure we are back at the user directory. Then we will clone the repo and navigate into the `StudyBuddy` directory.
+Let's clone the repo onto your Pi! First, we will run `cd` to make sure we are back in the user's home directory. Then we will clone the repo and navigate into the `StudyBuddy` directory.
 
 We will also run a `git checkout` command to switch to a branch specifically created for this workshop. In this command, the `-b` flag creates a local branch that we are going to `checkout` to, and the `--track` flag specifies the remote branch that this local branch will be tracking, in this case being the `NoSubDirectory` branch hosted on GitHub.  
 
@@ -194,10 +215,12 @@ npm install # or npm i
 ```
 
 #### Step 3
-The StudyBuddy React app located in the `client` directory also comes with a `deploy.sh` script which automatically builds the app and copies the content into `/var/www/html`. By convention, `/var/www/html` is the root directory of a web server. When the client navigates to the web server's URL, a html `GET` request is sent to the server, and the html file located in the root directory gets served in a response to the client, displaying the webpage on their web browser.
+The StudyBuddy React app located in the `client` directory also comes with a `deploy.sh` script which automatically builds the app and copies the content into `/var/www/html`. By convention, `/var/www/html` is the root directory of a web server. When the client navigates to the web server's URL, a http `GET` request is sent to the server, and the html file located in the root directory gets served in a response to the client, displaying the webpage on their web browser.
+
+We will use `./` here as this script has `set -x` which prints all commands and their arguments as they are executed. If left on, our shell will become very cluttered later.
 
 ``` Bash
-source deploy.sh
+./deploy.sh
 ```
 
 #### Step 4
@@ -225,7 +248,7 @@ Once this is done, you can navigate to `http://<your-ip-address>:4000` on your P
 #### Step 6
 This is the final step! We are going to configure Caddy to do two things:
 1. When receiving requests on the `/api` subdirectory, redirect those requests to the Express API running on port `:4000`
-2. When receiving requests on the `/` root, server the `/var/www/html/index.html` file. This is our React webpage
+2. When receiving requests on the `/` root, serve the `/var/www/html/index.html` file. This is our React webpage
 
 ``` Bash
 sudo nano /etc/caddy/Caddyfile
@@ -259,6 +282,7 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
 
 
