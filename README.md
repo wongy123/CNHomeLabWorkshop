@@ -155,7 +155,7 @@ Finally, let's install Caddy. Caddy is a web wserver that can also reverse proxy
 <img width="540" height="320" alt="image" src="https://github.com/user-attachments/assets/cd41a629-6ec3-417d-99c4-e5263b41398f" />
 
 To install Caddy using the InstallCaddy.sh script, run this command: 
-```
+``` Bash
 source InstallCaddy.sh
 ```
 
@@ -260,4 +260,5 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
