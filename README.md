@@ -217,8 +217,8 @@ cd CNHomeLabWorkshop/
 sudo cp StartNodeServer.sh /usr/local/bin/
 sudo cp start-node-express@.service /etc/systemd/system
 sudo systemctl daemon-reload
-sudo systemctl enable start-node-express@<your-user-name> # replace <your-user-name with your actual username in Ubuntu>
-sudo systemctl start start-node-express@<your-user-name> # replace <your-user-name with your actual username in Ubuntu>
+sudo systemctl enable start-node-express@$USER
+sudo systemctl start start-node-express@$USER
 ```
 
 Once this is done, you can navigate to `http://<your-ip-address>:4000` on your PC's web browser and you should see the text `Welcome to StudyBuddy API!` on the page.
@@ -260,6 +260,7 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
 
 
