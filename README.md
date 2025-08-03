@@ -242,6 +242,9 @@ Inside of the editor, type the following line and replace `{YOUR_KEY}` with your
 JWT_SECRET={YOUR_KEY}
 ```
 
+##### Side note
+For more information on the build steps and how to create admin or moderator users in the StudyBuddy API, please read the [How to run API](https://github.com/wongy123/StudyBuddy?tab=readme-ov-file#how-to-run-api) of the `READMD.md`.
+
 #### Step 6
 Our StudyBuddy app is built and ready for deployment. We need to run aother script from the `CNHomeLabWorkshop` repo to start the Express API in the background as a service. This does the same thing as just running `node server.js` inside of the `StudyBuddy/server/` directory, but running the command requires keeping the terminal running, whereas running it as a service means it can run in the background, and we can start the service automatically on boot.
 
@@ -294,6 +297,7 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
 
 
