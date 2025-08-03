@@ -232,6 +232,17 @@ npm i
 ```
 
 #### Step 5
+The StudyBuddy API uses JWT to generate authentication tokens for logged in users. We must create a `.env` file with a secret key. We will use the `nano` editor to create this file.
+``` Bash
+nano .env
+```
+
+Inside of the editor, type the following line and replace `{YOUR_KEY}` with your own JWT secret key. This can just be a random string of text. Then press `ctrl` + `x` to exit, and press `y` and `enter` to save the contents.
+``` .env
+JWT_SECRET={YOUR_KEY}
+```
+
+#### Step 6
 Our StudyBuddy app is built and ready for deployment. We need to run aother script from the `CNHomeLabWorkshop` repo to start the Express API in the background as a service. This does the same thing as just running `node server.js` inside of the `StudyBuddy/server/` directory, but running the command requires keeping the terminal running, whereas running it as a service means it can run in the background, and we can start the service automatically on boot.
 
 ``` Bash
@@ -246,7 +257,7 @@ sudo systemctl start start-node-express@$USER
 
 Once this is done, you can navigate to `http://<your-ip-address>:4000` on your PC's web browser and you should see the text `Welcome to StudyBuddy API!` on the page.
 
-#### Step 6
+#### Step 7
 This is the final step! We are going to configure Caddy to do two things:
 1. When receiving requests on the `/api` subdirectory, redirect those requests to the Express API running on port `:4000`
 2. When receiving requests on the `/` root, serve the `/var/www/html/index.html` file. This is our React webpage
@@ -279,10 +290,11 @@ Now, run this command to reload Caddy:
 sudo systemctl restart caddy
 ```
 
-#### Step 7
+#### Step 8
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
 
 
