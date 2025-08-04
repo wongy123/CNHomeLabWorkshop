@@ -12,7 +12,7 @@ Therefore, we will be installing Ubuntu Server on our Pi. Ubuntu is one of the m
 
 ### Walkthrough
 #### Step 1
-First, navigate to `https://www.raspberrypi.com/software/` and install the Raspberry Pi Imager. This tool allows you to easily configure and flash images of many different operating systems onto your Pi. An image is basically a copy of some files, in this case the entire operating system.
+First, navigate to [https://www.raspberrypi.com/software/] and install the Raspberry Pi Imager. This tool allows you to easily configure and flash images of many different operating systems onto your Pi. An image is basically a copy of some files, in this case the entire operating system.
 
 #### Step 2
 Take the microSD card out of your Pi and mount it on your PC. You can do this by either directly inserting the SD card into a card reader on your PC or by using a USB adapter. 
@@ -297,6 +297,7 @@ sudo systemctl restart caddy
 **Congratulations!!** You have completed all the steps required to deploy StudyBuddy on your Raspberry Pi! 
 
 You can now navigate to `http://<your-ip-address>` and you will see the StudyBuddy website! Make sure you use `http` instead of `https` as we do not have a TLS certificate for now!
+
 
 
 
